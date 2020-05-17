@@ -1,0 +1,62 @@
+.tooltips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  height: 100vh;
+  width: 100vw;
+}
+
+.tooltips li {
+  position: relative;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: border 0.2s;
+  background-color: var(--color);
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.tooltips li:hover {
+  border-color: var(--color);
+}
+
+.tooltips li::before,
+.tooltips li::after {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  opacity: 0;
+  transition: bottom, 0.2s, opacity 0.2s;
+}
+
+.tooltips li::before {
+  content: attr(data-text);
+  border-radius: 4px;
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.tooltips li::after {
+  content: "";
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.5);
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -25%);
+}
+
+.tooltips li:hover::after,
+.tooltips li:hover::before {
+  opacity: 1;
+  bottom: 20px;
+}
